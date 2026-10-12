@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#bfdbfe" stop-opacity="0.4" />
+    </linearGradient>
+  </defs>
+  <!-- Background subtle glow -->
+  <rect width="100%" height="100%" fill="#f1f5f9" rx="16"/>
+  <circle cx="200" cy="120" r="90" fill="#e2e8f0" opacity="0.6"/>
+  <!-- Car Shadow -->
+  <ellipse cx="200" cy="188" rx="140" ry="12" fill="#94a3b8" opacity="0.4"/>
+  <!-- Car Body -->
+  <path d="M60 155 C60 145 70 135 90 135 L120 135 L160 85 C170 75 185 75 250 75 L285 105 L320 120 C335 125 340 135 340 155 L340 165 C340 170 335 175 330 175 L300 175 C295 160 280 150 265 150 C250 150 235 160 230 175 L150 175 C145 160 130 150 115 150 C100 150 85 160 80 175 L70 175 C65 175 60 170 60 165 Z" fill="url(#carGrad)"/>
+  <!-- Windows -->
+  <path d="M165 90 L230 90 L230 130 L135 130 Z" fill="url(#glassGrad)"/>
+  <path d="M240 90 L275 110 L295 130 L240 130 Z" fill="url(#glassGrad)"/>
+  <!-- Headlight & Taillight -->
+  <path d="M330 140 L340 145 L335 155 L325 150 Z" fill="#fef08a"/>
+  <path d="M60 140 L65 140 L65 150 L60 150 Z" fill="#ef4444"/>
+  <!-- Wheels -->
+  <circle cx="115" cy="175" r="22" fill="#1e293b"/>
+  <circle cx="115" cy="175" r="14" fill="#64748b"/>
+  <circle cx="115" cy="175" r="6" fill="#f8fafc"/>
+  <circle cx="265" cy="175" r="22" fill="#1e293b"/>
+  <circle cx="265" cy="175" r="14" fill="#64748b"/>
+  <circle cx="265" cy="175" r="6" fill="#f8fafc"/>
+  <!-- Handle -->
+  <rect x="200" y="137" width="18" height="4" rx="2" fill="#1e3a8a"/>
+  <rect x="145" y="137" width="18" height="4" rx="2" fill="#1e3a8a"/>
+</svg>
