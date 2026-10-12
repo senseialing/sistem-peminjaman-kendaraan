@@ -12,7 +12,7 @@
     @auth
     <header class="navbar">
         <div class="nav-container">
-            <div style="display: flex; align-items: center; gap: 2rem;">
+            <div class="nav-brand-section">
                 <a href="{{ route('dashboard') }}" class="brand-logo">
                     <img src="{{ asset('images/logo-spv.png') }}" alt="SPV Logo">
                     <div>
@@ -21,79 +21,84 @@
                     </div>
                 </a>
 
-                <nav>
-                    <ul class="nav-links">
-                        <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                                📊 Dashboard
-                            </a>
-                        </li>
-
-                        @if(Auth::user()->isKaryawan())
-                        <li class="nav-item">
-                            <a href="{{ route('peminjaman.create') }}" class="{{ request()->routeIs('peminjaman.create') ? 'active' : '' }}">
-                                ✍️ Ajukan Peminjaman
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('peminjaman.index') }}" class="{{ request()->routeIs('peminjaman.index*') && !request()->routeIs('peminjaman.create') ? 'active' : '' }}">
-                                📑 Riwayat Saya
-                            </a>
-                        </li>
-                        @endif
-
-                        @if(Auth::user()->isManajer())
-                        <li class="nav-item">
-                            <a href="{{ route('otorisasi.index') }}" class="{{ request()->routeIs('otorisasi.*') ? 'active' : '' }}">
-                                🛡️ Otorisasi Permohonan
-                            </a>
-                        </li>
-                        @endif
-
-                        @if(Auth::user()->isStafAdmin())
-                        <li class="nav-item">
-                            <a href="{{ route('kendaraan.index') }}" class="{{ request()->routeIs('kendaraan.*') ? 'active' : '' }}">
-                                🚙 Data Armada & QR
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('sirkulasi.index') }}" class="{{ request()->routeIs('sirkulasi.index') ? 'active' : '' }}">
-                                🔄 Sirkulasi Kunci
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('sirkulasi.scan') }}" class="{{ request()->routeIs('sirkulasi.scan') ? 'active' : '' }}">
-                                🔍 Verifikasi / Scan
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('laporan.index') }}" class="{{ request()->routeIs('laporan.*') ? 'active' : '' }}">
-                                📈 Laporan & Audit
-                            </a>
-                        </li>
-                        @endif
-                    </ul>
-                </nav>
+                <button class="nav-mobile-toggle" id="mobileMenuToggle" type="button" aria-label="Toggle navigation" onclick="this.closest('.navbar').classList.toggle('nav-open')">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
 
-            <div class="nav-right">
-                <!-- User profile badge -->
-                <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <div style="text-align: right; line-height: 1.2;">
-                        <div style="font-weight: 700; font-size: 0.88rem;">{{ Auth::user()->nama }}</div>
-                        <span class="role-badge {{ strtolower(str_replace(' ', '', Auth::user()->hak_akses)) }}">
-                            {{ Auth::user()->hak_akses }}
-                        </span>
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                            📊 Dashboard
+                        </a>
+                    </li>
+
+                    @if(Auth::user()->isKaryawan())
+                    <li class="nav-item">
+                        <a href="{{ route('peminjaman.create') }}" class="{{ request()->routeIs('peminjaman.create') ? 'active' : '' }}">
+                            ✍️ Ajukan Peminjaman
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('peminjaman.index') }}" class="{{ request()->routeIs('peminjaman.index*') && !request()->routeIs('peminjaman.create') ? 'active' : '' }}">
+                            📑 Riwayat Saya
+                        </a>
+                    </li>
+                    @endif
+
+                    @if(Auth::user()->isManajer())
+                    <li class="nav-item">
+                        <a href="{{ route('otorisasi.index') }}" class="{{ request()->routeIs('otorisasi.*') ? 'active' : '' }}">
+                            🛡️ Otorisasi Permohonan
+                        </a>
+                    </li>
+                    @endif
+
+                    @if(Auth::user()->isStafAdmin())
+                    <li class="nav-item">
+                        <a href="{{ route('kendaraan.index') }}" class="{{ request()->routeIs('kendaraan.*') ? 'active' : '' }}">
+                            🚙 Data Armada & QR
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('sirkulasi.index') }}" class="{{ request()->routeIs('sirkulasi.index') ? 'active' : '' }}">
+                            🔄 Sirkulasi Kunci
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('sirkulasi.scan') }}" class="{{ request()->routeIs('sirkulasi.scan') ? 'active' : '' }}">
+                            🔍 Verifikasi / Scan
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('laporan.index') }}" class="{{ request()->routeIs('laporan.*') ? 'active' : '' }}">
+                            📈 Laporan & Audit
+                        </a>
+                    </li>
+                    @endif
+                </ul>
+
+                <div class="nav-right">
+                    <div class="user-info-box">
+                        <div class="user-details-text">
+                            <div style="font-weight: 700; font-size: 0.88rem;">{{ Auth::user()->nama }}</div>
+                            <span class="role-badge {{ strtolower(str_replace(' ', '', Auth::user()->hak_akses)) }}">
+                                {{ Auth::user()->hak_akses }}
+                            </span>
+                        </div>
+
+                        <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit" class="btn btn-secondary btn-sm" title="Keluar">
+                                🚪 Logout
+                            </button>
+                        </form>
                     </div>
-
-                    <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-                        @csrf
-                        <button type="submit" class="btn btn-secondary btn-sm" title="Keluar">
-                            🚪 Logout
-                        </button>
-                    </form>
                 </div>
-            </div>
+            </nav>
         </div>
     </header>
     @endauth
